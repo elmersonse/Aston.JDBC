@@ -1,13 +1,11 @@
 package main.java.org.example;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         try {
             DBService db = new DBService();
-            Connection conn = db.getConnection();
             System.out.println("Successfully connected to DB");
             db.createJobTable();
             System.out.println("Table job created");
@@ -22,7 +20,7 @@ public class Main {
             db.addEmployee("Владимир", 2);
 
             System.out.println("Job table:");
-            ArrayList<String> res = db.getJobData();
+            List<String> res = db.getJobData();
             for (String s: res) {
                 System.out.println(s);
             }

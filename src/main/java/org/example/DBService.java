@@ -1,8 +1,7 @@
 package main.java.org.example;
-
-import java.awt.image.AreaAveragingScaleFilter;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBService {
     private final Connection CONNECTION;
@@ -14,7 +13,7 @@ public class DBService {
         String password = "password";
         CONNECTION = DriverManager.getConnection(url, user, password);
     }
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() {
         return CONNECTION;
     }
 
@@ -46,7 +45,7 @@ public class DBService {
         }
     }
 
-    public ArrayList<String> getJobData() throws SQLException {
+    public List<String> getJobData() throws SQLException {
         String query = "SELECT * FROM job";
         try(Statement st = CONNECTION.createStatement()) {
             st.execute(query);
@@ -71,7 +70,7 @@ public class DBService {
         }
     }
 
-    public ArrayList<String> getEmployeeData() throws SQLException {
+    public List<String> getEmployeeData() throws SQLException {
         String query = "SELECT * FROM employee " +
                 "JOIN job ON employee.job_id = job.id";
         try(Statement st = CONNECTION.createStatement()) {
