@@ -4,15 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Printer {
-    private final DBService DB;
+    private final DBService dbService;
 
     public Printer(DBService db) {
-        DB = db;
+        dbService = db;
     }
 
     public void printJobTable() throws SQLException {
         System.out.println("\nJob table:");
-        List<String> res = DB.getJobData();
+        List<String> res = dbService.getJobData();
         for (String s: res) {
             System.out.println(s);
         }
@@ -20,7 +20,7 @@ public class Printer {
 
     public void printEmployeeTable() throws SQLException {
         System.out.println("\nEmployee table:");
-        List<String> res = DB.getEmployeeData();
+        List<String> res = dbService.getEmployeeData();
         for (String s: res) {
             System.out.println(s);
         }

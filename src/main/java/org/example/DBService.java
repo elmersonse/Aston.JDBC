@@ -13,9 +13,6 @@ public class DBService {
         String password = "password";
         CONNECTION = DriverManager.getConnection(url, user, password);
     }
-    public Connection getConnection() {
-        return CONNECTION;
-    }
 
     public void createJobTable() throws SQLException {
         String jobTableQuery = "CREATE TABLE job " +
