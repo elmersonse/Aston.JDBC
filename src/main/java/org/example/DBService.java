@@ -88,4 +88,44 @@ public class DBService {
         }
     }
 
+    public boolean updateJob(String name, int id) throws SQLException {
+        String query = "UPDATE job " +
+                "SET name = ? " +
+                "WHERE id = ?";
+        try(PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+            ps.setString(1, name);
+            ps.setInt(2, id);
+            return ps.execute();
+        }
+    }
+
+    public boolean updateEmployee(String name, int id) throws SQLException {
+        String query = "UPDATE employee " +
+                "SET name = ? " +
+                "WHERE id = ?";
+        try(PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+            ps.setString(1, name);
+            ps.setInt(2, id);
+            return ps.execute();
+        }
+    }
+
+    public boolean deleteJob(int id) throws SQLException {
+        String query = "DELETE FROM job " +
+                "WHERE id = ?";
+        try(PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+            ps.setInt(1, id);
+            return ps.execute();
+        }
+    }
+
+    public boolean deleteEmployee(int id) throws SQLException {
+        String query = "DELETE FROM employee " +
+                "WHERE id = ?";
+        try(PreparedStatement ps = CONNECTION.prepareStatement(query)) {
+            ps.setInt(1, id);
+            return ps.execute();
+        }
+    }
+
 }
